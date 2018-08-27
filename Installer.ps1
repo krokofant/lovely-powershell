@@ -11,19 +11,19 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Start-Process powershell.exe -Verb Runas -ArgumentList "-Command & 'Install-Module -Name PowerShellGet -Force'"
 
 # Install powerline fonts
-wget 'https://github.com/powerline/fonts/blob/master/DejaVuSansMono/DejaVu%20Sans%20Mono%20for%20Powerline.ttf?raw=true' -OutFile .\temp\DejaVuSansMonoPowerLine.ttf
+wget -Headers @{"Cache-Control"="no-cache"} 'https://github.com/powerline/fonts/blob/master/DejaVuSansMono/DejaVu%20Sans%20Mono%20for%20Powerline.ttf?raw=true' -OutFile .\temp\DejaVuSansMonoPowerLine.ttf
 $FONTS = 0x14
 $objShell = New-Object -ComObject Shell.Application
 $objFolder = $objShell.Namespace($FONTS)
 $objFolder.CopyHere($(Get-ChildItem .\temp\DejaVuSansMonoPowerLine.ttf).FullName)
 
 # Install profile
-wget 'https://raw.githubusercontent.com/krokofant/lovely-powershell/master/Microsoft.PowerShell_profile.ps1' -OutFile .\temp\Microsoft.PowerShell_profile.ps1
+wget -Headers @{"Cache-Control"="no-cache"} 'https://raw.githubusercontent.com/krokofant/lovely-powershell/master/Microsoft.PowerShell_profile.ps1' -OutFile .\temp\Microsoft.PowerShell_profile.ps1
 Copy-Item .\temp\Microsoft.PowerShell_profile.ps1 $PROFILE
 Unblock-File $PROFILE
 
 # Install LovelyShell
-wget 'https://raw.githubusercontent.com/krokofant/lovely-powershell/master/LovelyShell.psm1' -OutFile "$powershellRoot\LovelyShell.psm1"
+wget -Headers @{"Cache-Control"="no-cache"} 'https://raw.githubusercontent.com/krokofant/lovely-powershell/master/LovelyShell.psm1' -OutFile "$powershellRoot\LovelyShell.psm1"
 
 # Install scoop package manager
 iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
