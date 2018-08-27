@@ -35,3 +35,12 @@ Set-Alias ~ cdhome -Option AllScope
 Set-Theme $PrimaryTheme
 function themePrimary { Set-Theme $PrimaryTheme }
 function themeCode { Set-Theme $SecondaryTheme }
+
+function hackyInstall {
+  param
+    (
+        [string] $ModuleName,
+        [string] $ModuleUrl
+    )
+  wget $ModuleUrl -OutFile "$(Split-Path $PROFILE)\$ModuleName.psm1"
+}
