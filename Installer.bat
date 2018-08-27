@@ -6,3 +6,5 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& .\temp\Installer.ps1"
 REM PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& .\Installer.ps1"
 
 pause
+
+rmdir /S /Q temp
