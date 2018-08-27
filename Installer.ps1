@@ -1,5 +1,8 @@
 $powershellRoot = $(Split-Path $PROFILE)
 
+# Workaround wget
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls, Ssl3"
+
 # As admin
 Start-Process powershell.exe -Verb Runas -ArgumentList "-Command & 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force'"
 # As user

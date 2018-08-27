@@ -42,5 +42,6 @@ function hackyInstall {
         [string] $ModuleName,
         [string] $ModuleUrl
     )
+  [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls, Ssl3"
   wget $ModuleUrl -OutFile "$(Split-Path $PROFILE)\$ModuleName.psm1"
 }
