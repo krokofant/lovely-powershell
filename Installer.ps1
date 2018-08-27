@@ -28,5 +28,3 @@ iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 # Config themes
 scoop install concfg
 concfg import 'https://gist.githubusercontent.com/krokofant/bddff344478fcc22c89978f5cd152dc8/raw/ce075289536522e0c304287fb12d6cc5d615a875/ashes-custom.json'
-
-calc.exe
