@@ -1,8 +1,13 @@
 {
-    "version": "1.0",
-    "url": "https://github.com/krokofant/lovely-powershell/archive/master.zip",
-    "extract_dir": "lovely-powershell-master",
-    "psmodule": {
-        "name": "LovelyPowershell"
-    }
+  "version": "1.0",
+  "url": "https://github.com/krokofant/lovely-powershell/archive/master.zip",
+  "extract_dir": "lovely-powershell-master",
+  "psmodule": {
+    "name": "LovelyPowershell"
+  },
+  "depends": ["concfg"],
+  "post_install": [
+    "concfg import 'https://gist.githubusercontent.com/krokofant/bddff344478fcc22c89978f5cd152dc8/raw/ce075289536522e0c304287fb12d6cc5d615a875/ashes-custom.json'",
+    "PowerShell -NoProfile -ExecutionPolicy Bypass -Command \"& $dir\\InstallFont.ps1\""
+  ]
 }

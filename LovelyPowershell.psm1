@@ -11,15 +11,16 @@ function installIfMissing {
 
 $PrimaryTheme = "agnoster"
 $SecondaryTheme = "sorin"
+$DefaultUser = $env:USERNAME
 
 
 installIfMissing posh-git
 installIfMissing oh-my-posh
 installIfMissing Get-ChildItemColor
 
-Import-Module posh-git
-Import-Module oh-my-posh
-Import-Module Get-ChildItemColor
+Import-Module -Global posh-git
+Import-Module -Global oh-my-posh
+Import-Module -Global Get-ChildItemColor
 
 # Fix a oh-my-posh color issue
 Set-PSReadlineOption -ResetTokenColors
@@ -28,22 +29,17 @@ Set-PSReadlineOption -ResetTokenColors
 Set-Alias -Scope Global l Get-ChildItemColor -Option AllScope
 Set-Alias -Scope Global ls Get-ChildItemColorFormatWide -Option AllScope
 
-# Path shortcuts
-Set-Alias ~ cdhome -Option AllScope
-
 # Setup themes
 Set-Theme $PrimaryTheme
 function themePrimary { Set-Theme $PrimaryTheme }
 function themeCode { Set-Theme $SecondaryTheme }
 
-function hackyInstall {
-  param
-    (
-        [string] $ModuleName,
-        [string] $ModuleUrl
-    )
-  [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls, Ssl3"
-  wget -Headers @{"Cache-Control"="no-cache"} $ModuleUrl -OutFile "$(Split-Path $PROFILE)\$ModuleName.psm1"
-}
-
-Export-ModuleMember -Function 'themeCode'
+Export-ModuleMember -Function @(
+  'themePrimary',
+  'themeCode',
+  'installIfMissing'
+) -Alias @(
+  '~'
+) -Variable @(
+  'DefaultUser'
+)
