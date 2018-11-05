@@ -1,7 +1,7 @@
 {
     "version": "1.0",
     "url": "https://github.com/krokofant/lovely-powershell/archive/master.zip",
-    "extract_dir": "LovelyPowershell",
+    "extract_dir": "lovely-powershell-master",
     "psmodule": {
         "name": "LovelyPowershell"
     }
