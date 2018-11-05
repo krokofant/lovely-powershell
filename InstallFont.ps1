@@ -8,5 +8,5 @@ wget -Headers @{"Cache-Control"="no-cache"} 'https://github.com/powerline/fonts/
 $FONTS = 0x14
 $objShell = New-Object -ComObject Shell.Application
 $objFolder = $objShell.Namespace($FONTS)
-$objFolder.CopyHere($(Get-ChildItem .\temp\DejaVuSansMonoPowerLine.ttf).FullName)
+$objFolder.CopyHere($(Get-ChildItem .\lp-temp\DejaVuSansMonoPowerLine.ttf).FullName)
 Remove-Item .\lp-temp -Force -Recurse
