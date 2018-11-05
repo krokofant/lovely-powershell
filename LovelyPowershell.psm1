@@ -45,3 +45,5 @@ function hackyInstall {
   [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls, Ssl3"
   wget -Headers @{"Cache-Control"="no-cache"} $ModuleUrl -OutFile "$(Split-Path $PROFILE)\$ModuleName.psm1"
 }
+
+Export-ModuleMember -Function 'themeCode'
