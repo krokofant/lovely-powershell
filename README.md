@@ -10,6 +10,11 @@ Download the Installer.bat and run it or install scoop by yourself and install L
 scoop install https://raw.githubusercontent.com/krokofant/lovely-powershell/master/lovelypowershell.json
 ```
 
+And then add the import to your powershell profile
+```powershell
+Import-Module LovelyPowershell
+```
+
 ## Uninstall
 
 Might not remove all graphical changes like terminal colors.
