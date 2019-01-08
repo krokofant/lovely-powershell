@@ -2,6 +2,8 @@
 
 Makes PowerShell a bit prettier. Using my default config with oh-my-posh.
 
+![Powershell Window](powershell.png)
+
 ## Install
 
 ```powershell
