@@ -22,9 +22,6 @@ Import-Module -Global posh-git
 Import-Module -Global oh-my-posh
 Import-Module -Global Get-ChildItemColor
 
-# Fix a oh-my-posh color issue
-Set-PSReadlineOption -ResetTokenColors
-
 # Prettier ls/l output
 Set-Alias -Scope Global l Get-ChildItemColor -Option AllScope
 Set-Alias -Scope Global ls Get-ChildItemColorFormatWide -Option AllScope
