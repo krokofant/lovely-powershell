@@ -1,18 +1,27 @@
-# lovely-powershell [via scoop-powershell-bucket](https://github.com/krokofant/scoop-powershell-bucket)
+# ✨ Lovely Powershell
 
-Makes PowerShell a bit prettier. Using my default config with oh-my-posh.
+_✨ Lovely Powershell_ is here to make it easy to have a pretty PowerShell. Utilizing [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh) and custom console settings via [concfg](https://github.com/lukesampson/concfg).
 
-![Powershell Window](powershell.png)
+![Powershell Window](pwsh.png)
 
-## Install
+## Installation
+
+### 1. Install scoop
 
 ```powershell
-# Install scoop if you haven't
 set-executionpolicy remotesigned -s currentuser
 iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+```
 
-# Install this module
+### 2. Install the [powershell bucket](https://github.com/krokofant/scoop-powershell-bucket)
+
+```powershell
 scoop bucket add powershell-tools git@github.com:krokofant/scoop-powershell-bucket.git
+```
+
+### 3. Install lovely-powershell ❤
+
+```powershell
 scoop install lovelypowershell
 ```
 
@@ -29,3 +38,5 @@ Might not remove all graphical changes like terminal colors.
 ```powershell
 scoop uninstall lovelypowershell
 ```
+
+---
