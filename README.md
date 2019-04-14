@@ -1,4 +1,4 @@
-# lovely-powershell
+# lovely-powershell [via scoop-powershell-bucket](https://github.com/krokofant/scoop-powershell-bucket)
 
 Makes PowerShell a bit prettier. Using my default config with oh-my-posh.
 
