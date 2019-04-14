@@ -7,7 +7,7 @@ $AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
 [Net.ServicePointManager]::SecurityProtocol = $AllProtocols
 
 ## Install powerline fonts
-$tempFolder = Join-Path -Resolve .\lp-temp\ ""
+$tempFolder = Join-Path -Resolve $PSScriptRoot \lp-temp
 function download {
     Invoke-WebRequest -Headers @{"Cache-Control" = "no-cache" } $($args[0]) -OutFile $($tempFolder + $args[1])
 }
@@ -23,4 +23,4 @@ $objShell = New-Object -ComObject Shell.Application
 $objFolder = $objShell.Namespace($FONTS)
 $objFolder.CopyHere($objShell.Namespace($tempFolder).Items())
 
-Remove-Item .\lp-temp -Force -Recurse
+Remove-Item $tempFolder -Force -Recurse
