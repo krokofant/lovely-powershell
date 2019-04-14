@@ -1,22 +1,13 @@
-function installIfMissing {
-  param
-    (
-        [string] $ModuleName
-    )
-    if (!(Get-Module -ListAvailable -Name $ModuleName)) {
-      Write-Output "Installing missing module $ModuleName"
-      Install-Module -Name $ModuleName -Scope CurrentUser
-    }
-}
+Import-Module PS-Install-If-Missing
 
-$PrimaryTheme = "agnoster"
+$PrimaryTheme = "hitchens"
 $SecondaryTheme = "sorin"
 $DefaultUser = $env:USERNAME
 
 
-installIfMissing posh-git
-installIfMissing oh-my-posh
-installIfMissing Get-ChildItemColor
+Install-IfMissing posh-git
+Install-IfMissing oh-my-posh
+Install-IfMissing Get-ChildItemColor
 
 Import-Module -Global posh-git
 Import-Module -Global oh-my-posh
@@ -27,14 +18,13 @@ Set-Alias -Scope Global l Get-ChildItemColor -Option AllScope
 Set-Alias -Scope Global ls Get-ChildItemColorFormatWide -Option AllScope
 
 # Setup themes
+$Global:ThemeSettings.MyThemesLocation = Join-Path $PSScriptRoot "PoshThemes"
 Set-Theme $PrimaryTheme
 function themePrimary { Set-Theme $PrimaryTheme }
 function themeCode { Set-Theme $SecondaryTheme }
 
 Export-ModuleMember -Function @(
-  'themePrimary',
-  'themeCode',
-  'installIfMissing'
+  'Set-Theme'
 ) -Alias @(
   '~'
 ) -Variable @(
