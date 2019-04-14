@@ -1,7 +1,5 @@
-# Configurate colors with concfg
-concfg import 'https://raw.githubusercontent.com/krokofant/lovely-powershell/master/Hitchens.json'
-
 # Install fonts
+Write-Host "Installing font dependencies..."
 ## Workaround wget
 $AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
 [Net.ServicePointManager]::SecurityProtocol = $AllProtocols
@@ -24,3 +22,8 @@ $objFolder = $objShell.Namespace($FONTS)
 $objFolder.CopyHere($objShell.Namespace($tempFolder).Items())
 
 Remove-Item $tempFolder -Force -Recurse
+
+# Configurate colors with concfg
+Write-Host "Configuring terminal colors..."
+concfg import -y 'https://raw.githubusercontent.com/krokofant/lovely-powershell/master/Hitchens.json'
+Write-Host "The changes will be active on any newly started terminal"
