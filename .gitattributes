@@ -1,21 +1,6 @@
-# Set default behaviour, in case users don't have core.autocrlf set.
-* text=auto
-
-# Explicitly declare text files we want to always be normalized and converted
-# to native line endings on checkout.
-*.md            text
-*.gitattributes text
-
-# Declare files that will always have CRLF line endings on checkout.
-*.ps1    text
-*.psm1   text
-*.psd1   text
-*.psc1   text
-*.ps1xml text
-*.clixml text
-*.xml    text
-*.txt    text
-
-# Denote all files that are truly binary and should not be mergeable.
-*.dll binary
-*.exe binary
+# All PowerShell files should use CRLF
+*.ps1    text   eol=crlf
+*.psm1   text   eol=crlf
+*.psd1   text   eol=crlf
+*.psc1   text   eol=crlf
+*.ps1xml text   eol=crlf
