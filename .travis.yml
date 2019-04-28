@@ -1,0 +1,24 @@
+os: windows
+language: csharp
+mono: none
+script:
+    - "echo \"\U0001F680\U0001F680\U0001F680\""
+after_success:
+    - git config --local user.name "krokofant"
+    - git config --local user.email "krokofant@users.noreply.github.com"
+    - if [ -z "$TRAVIS_TAG" ]; then export TRAVIS_TAG=$(powershell -NoProfile -ExecutionPolicy
+      Bypass -Command "./bin/get-version-tag.ps1"); git tag -a $TRAVIS_TAG -m "Released
+      $TRAVIS_TAG"; fi;
+before_deploy:
+    - 7z a "$(basename "$PWD").zip" *.psd1 *.psm1 *.ps1 PoshThemes *.json
+deploy:
+    provider: releases
+    api_key:
+        secure: WqhA+BIcaiQgEn5O50T81w/L74Syzrm6sub/dfEmhEPjmEZVOG4p3R+d2NE4ws5GEhwikNUILisIf3paf4U7ijDdaPQ9YFV8fhOOfoALF7IpoBEqXUaFbyHqOsc7m7uzfsgA98mVR1YvwgEBX/yhVH6mtThmvkZLGhdSAxg9w14wbX/7//fhMu9vvuTSI61xl/bTKjZ6K+TSH13VvPArfq9NWIxcRdIfrp8MfBaKqgc/I0eYKgbUpUF3e3FCIJDMiG6uf3Llw6wUon0fB0qEMfDdoRxEQzeoF6qa5jCV/QNxiO4NV6Beb6fxarK/uVRVlh51OH7zh/oyKFooZdrXgcCZLVEIks89MHEDHoQtahhxBV7W3fvbwhspx9H5FMQguY4Jkz3mkOLCpqm6AHkOKxQ9mJpAFzEDvTO7jh2NKVeZaSJQn+6Uw5OZ9ad77wABdIHZJ8w+6MEGhLvb0aBZgIMjbkNdfN44Qd0vNuY0/f4gLuFAANI4kYAnLSVL9o4/JRy/YsrR10iArrttmvGR80wNx2DwAxxxzI4WGe+BuFXhwx33+VMg3l2qo/P8J8jz9usEUyglqiHB6wv3xuUuPCoZdODD36tWCb7gsfo6+Vlvm9+zCRz27BDos2FYAHXxukpHyHTqfFS2JOZDcZq8faM6I4bgrO1+8Upceyyk08o=
+    skip_cleanup: true
+    draft: false
+    file_glob: true
+    file: "*.zip"
+    on:
+        repo: krokofant/lovely-powershell
+        tags: true
