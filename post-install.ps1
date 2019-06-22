@@ -27,5 +27,5 @@ Remove-Item $tempFolder -Force -Recurse
 Write-Host "Making sure concfg is up to date"
 scoop update concfg
 Write-Host "Configuring terminal colors..."
-concfg import 'https://raw.githubusercontent.com/krokofant/lovely-powershell/master/Hitchens.json'
+concfg import -y 'https://raw.githubusercontent.com/krokofant/lovely-powershell/master/Hitchens.json'
 Write-Host "The changes will be active on any newly started terminal"
