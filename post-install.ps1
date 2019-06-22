@@ -24,6 +24,8 @@ $objFolder.CopyHere($objShell.Namespace($tempFolder).Items())
 Remove-Item $tempFolder -Force -Recurse
 
 # Configurate colors with concfg
+Write-Host "Making sure concfg is up to date"
+scoop update concfg
 Write-Host "Configuring terminal colors..."
 concfg import 'https://raw.githubusercontent.com/krokofant/lovely-powershell/master/Hitchens.json'
 Write-Host "The changes will be active on any newly started terminal"
